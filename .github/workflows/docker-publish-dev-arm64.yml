@@ -65,8 +65,8 @@ jobs:
           flavor: |
             latest=auto
           tags: |
-            type=ref,enable=true,priority=600,prefix=,suffix=-arm64,event=branch
-            type=raw,value=${{ env.GITHUB_HEAD_REF }}-arm64
+            type=ref,enable=true,priority=600,prefix=,suffix=arm64,event=branch
+            type=raw,value=${{ env.GITHUB_HEAD_REF }}arm64
 
 
       # Build and push Docker image with Buildx (don't push on PR)
