@@ -1,0 +1,8 @@
+version: "3.5"
+services:
+  worker:
+    image: eftechcombr/actions-runner:latest
+    build: . 
+    env_file:
+      - .env
+    
