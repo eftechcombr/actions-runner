@@ -1,4 +1,4 @@
-name: Docker build dev
+name: Docker build dev arm64
 
 on:
   push:
@@ -65,8 +65,8 @@ jobs:
           flavor: |
             latest=auto
           tags: |
-            type=ref,enable=true,priority=600,prefix=,suffix=,event=branch
-            type=raw,value=${{ env.GITHUB_HEAD_REF }}
+            type=ref,enable=true,priority=600,prefix=,suffix=-arm64,event=branch
+            type=raw,value=${{ env.GITHUB_HEAD_REF }}-arm64
 
 
       # Build and push Docker image with Buildx (don't push on PR)
@@ -76,7 +76,8 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: ./
-          platforms: linux/amd64
+          dockerfile: Dockerfile.arm64
+          platforms: linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
